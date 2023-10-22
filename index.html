@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube Transcript Summarizer</title>
+</head>
+<body>
+    <h1>YouTube Transcript Summarizer</h1>
+    <form method="POST">
+        <label for="video_id">Enter YouTube Video ID:</label>
+        <input type="text" id="video_id" name="video_id" required>
+        <input type="submit" value="Summarize">
+    </form>
+
+    {% if summarized_text %}
+        <h2>Summarized Transcript:</h2>
+        <p>{{ summarized_text }}</p>
+    {% endif %}
+
+    {% if error_message %}
+        <h2>Error:</h2>
+        <p>{{ error_message }}</p>
+    {% endif %}
+</body>
+</html>
