@@ -1,0 +1,40 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube Transcript Summarizer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">YouTube Transcript Summarizer</h1>
+        <form method="POST" class="mt-4">
+            <div class="form-group">
+                <label for="video_id">Enter YouTube Video ID or URL:</label>
+                <input type="text" class="form-control" id="video_id" name="video_id" required placeholder="e.g., dQw4w9WgXcQ or https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+            </div>
+            <button type="submit" class="btn btn-primary">Summarize</button>
+        </form>
+
+        {% if summarized_text %}
+            <div class="alert alert-success" role="alert">
+                <h2>Summarized Transcript:</h2>
+                <p>{{ summarized_text }}</p>
+            </div>
+        {% endif %}
+
+        {% if error_message %}
+            <div class="alert alert-danger" role="alert">
+                <h2>Error:</h2>
+                <p>{{ error_message }}</p>
+            </div>
+        {% endif %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
